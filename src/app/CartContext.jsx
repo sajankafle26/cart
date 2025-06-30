@@ -4,30 +4,9 @@ import React, { createContext, useReducer } from "react";
 const CartReducer = (state, action) => {
   switch (action.type) {
     case "addtocart":
-      const existingItemIndex = state.cart.findIndex(
-          item => item._id === action.payload._id
-        );
-      
-       if (existingItemIndex !== -1)
-         {
-          return {
-            ...state,
-          cart: state.cart.map(item =>
-            item._id === action.payload._id ? { ...item, quantity: item.quantity + 1 } : item
-          ),
-          };
-        } else {
-          // If item doesn't exist, add it to the cart
-          return {
-            ...state,
-            cart: [...state.cart, {...action.payload, quantity: 1}],
-          };
-        }
-
-     case "remove":
-      return { cart: state.cart.filter(a=>a._id !== action.payload._id) };
+      return { cart: [...state.cart, action.payload] };
     default:
-      return state;  
+      return state; // Don't forget to return the current state by default
   }
 };
 

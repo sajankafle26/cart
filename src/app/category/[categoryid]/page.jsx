@@ -5,8 +5,8 @@ import CartContext from '@/app/CartContext'
  
 function page() {
     let {categoryid}=useParams()
-     let {state, dispatch}=useContext(CartContext)
      let [productsByCat, setProductsBycat]=useState([])
+      const { state,dispatch } = useContext(CartContext);
        useEffect(()=>{
       fetch(`/api/products?category=${categoryid}`).then(a=>a.json()).then(b=>setProductsBycat(b))
        },[categoryid])

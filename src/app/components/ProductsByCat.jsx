@@ -1,15 +1,14 @@
 "use client"
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay,Pagination } from 'swiper/modules';
-import CartContext from '../CartContext';
 
 
 function ProductsByCat(props) {
-    let {state, dispatch}=useContext(CartContext)
+    
    let [productsByCat, setProductsBycat]=useState([])
    useEffect(()=>{
   fetch(`/api/products?category=${props.catId}`).then(a=>a.json()).then(b=>setProductsBycat(b))
@@ -36,7 +35,7 @@ function ProductsByCat(props) {
         {productsByCat.map(a=>(
  <SwiperSlide key={a._id}><img src={a.image} alt="" />
  <p className='py-4 font-bold'>{a.title}</p>
-     <button className='bg-red-400 p-2' onClick={()=>dispatch({type: 'addtocart', payload: a})}>Add to Cart</button>
+ <button className='bg-red-400 text-white p-2'>Add to Cart</button>
  </SwiperSlide>
         ))}
        

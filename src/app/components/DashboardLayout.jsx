@@ -22,6 +22,7 @@ function DashboardLayout({children}) {
                 <li><Link href='/dashboard'>Dashboard</Link></li>
                 <li><Link href='/dashboard/categories'>Category</Link></li>
                 <li><Link href='/dashboard/products'>Product</Link></li>
+                 <li><Link href='/dashboard/orders'>Order</Link></li>
                 <button className='bg-red-800 p-3 text-white' onClick={handleLogout}>Logout</button>
             </ul>
         </nav>
